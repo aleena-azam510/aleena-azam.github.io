@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Word Prediction - ML Project Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #84cc16;
+            --secondary: #4d7c0f;
+            --accent: #d9f991;
+            --dark: #1e40af;
+            --light: #f7fefc;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0fdf4;
+            color: #1a2e05;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            transform: scale(1);
+        }
+
+        .glass-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .animated-gradient {
+            background-image: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient-animation 4s ease-in-out infinite;
+        }
+
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 1s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .code-block {
+            background-color: #2d2d2d;
+            color: #ccc;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 min-h-screen">
+    <header class="py-16 bg-[#d9f991]">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h1 class="header-title text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 text-[#4d7c0f]">
+                Next Word Prediction
+            </h1>
+            <p class="header-subtitle text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
+                An ML Project Documentation
+            </p>
+            <p class="text-md text-gray-600 mt-2">
+                Presented by Computer Science Part 3 (Pre-Medical)
+            </p>
+            <p class="text-sm text-gray-500 mt-1">
+                Aleena Azam, Saba e Yasrab, Zainab Noor
+            </p>
+        </div>
+    </header>
+
+    <main class="py-12 px-6">
+        <div class="max-w-4xl mx-auto space-y-12">
+
+            <section class="glass-card p-8 slide-up">
+                <h2 class="text-2xl font-bold mb-4 text-lime-700">1. Introduction</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    The task of predicting the probability of a next word in a sequence is known as <strong>language modeling</strong>. This project aims to develop a machine learning model that can accurately predict the next word in a sentence based on input text. The model was trained on both English and Urdu datasets. Very little work has been done on language modeling for Urdu, and this project applies language modeling to both languages. The core of the model uses an <strong>LSTM (Long Short-Term Memory)</strong> layer, which is a type of recurrent neural network (RNN) designed to handle sequence prediction tasks.
+                </p>
+            </section>
+
+            ---
+
+            <section class="glass-card p-8 slide-up delay-100">
+                <h2 class="text-2xl font-bold mb-4 text-lime-700">2. Data Preprocessing</h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    The model was trained on a dataset of Sherlock Holmes stories. Before training, the data underwent several preprocessing steps:
+                </p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>The text was tokenized, which means it was split into individual words.</li>
+                    <li>A word index was created to map each unique word to a numerical ID.</li>
+                    <li>N-gram sequences were created from the tokenized lines of text.</li>
+                    <li>The input sequences were padded to ensure they all had the same length.</li>
+                    <li>One-hot encoding was applied to the data to prepare it for the model.</li>
+                </ul>
+            </section>
+
+            ---
+
+            <section class="glass-card p-8 slide-up delay-200">
+                <h2 class="text-2xl font-bold mb-4 text-lime-700">3. Model Architecture</h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    The model architecture is comprised of three key layers:
+                </p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li><strong>Embedding Layer:</strong> This layer converts the integer-encoded words into a dense vector representation.</li>
+                    <li><strong>LSTM Layer:</strong> This is the main layer for capturing sequential dependencies in the text.</li>
+                    <li><strong>Dense Layer with Softmax Activation:</strong> The output layer uses a dense layer with a softmax activation function to predict the probability of each word in the vocabulary as the next word.</li>
+                </ul>
+            </section>
+
+            ---
+
+            <section class="glass-card p-8 slide-up delay-300">
+                <h2 class="text-2xl font-bold mb-4 text-lime-700">4. Training</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    The data was split into input (X) and output (y) variables. The model was then compiled and fitted to the data.
+                </p>
+            </section>
+
+            ---
+
+            <section class="glass-card p-8 slide-up delay-400">
+                <h2 class="text-2xl font-bold mb-4 text-lime-700">5. Text Generation</h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    The trained model can generate new text by taking a "seed text" as input and predicting the next word. The process is repeated to generate a sequence of words. Below is the code logic from the project's Jupyter Notebook that demonstrates this process:
+                </p>
+                <pre class="code-block"><code>
+def generate_text(seed_text, next_words, model, max_sequence_len):
+    for _ in range(next_words):
+        token_list = tokenizer.texts_to_sequences([seed_text])[0]
+        token_list = pad_sequences([token_list], maxlen=max_sequence_len - 1, padding='pre')
+        predicted = np.argmax(model.predict(token_list), axis=-1)
+        output_word = ""
+        for word, index in tokenizer.word_index.items():
+            if index == predicted:
+                output_word = word
+                break
+        seed_text += " " + output_word
+        print(seed_text)
+        time.sleep(2)
+                </code></pre>
+            </section>
+
+            ---
+
+            <section class="glass-card p-8 slide-up delay-500">
+                <h2 class="text-2xl font-bold mb-4 text-lime-700">6. Results</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    The model demonstrates its ability to predict the next word based on a given input text. By training on both English and Urdu datasets, the model learns to generate contextually relevant words. The model performs well with short sequences that contain strong contextual clues, resulting in logical and grammatically correct predictions.
+                </p>
+            </section>
+
+            ---
+
+            <section class="glass-card p-8 slide-up delay-600">
+                <h2 class="text-2xl font-bold mb-4 text-lime-700">7. Challenges and Future Improvements</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    The model's performance may degrade with ambiguous or very long input texts due to limited dataset diversity or insufficient training. Potential future improvements include:
+                </p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li><strong>Hyperparameter Tuning:</strong> Evaluating different parameters could enhance the model's performance.</li>
+                    <li><strong>Advanced Models:</strong> Implementing more advanced architectures like Transformer-based models could improve long-term dependency capture.</li>
+                    <li><strong>Larger Dataset:</strong> Training the model on larger datasets could improve generalization.</li>
+                </ul>
+            </section>
+
+            ---
+
+            <section class="glass-card p-8 slide-up delay-700">
+                <h2 class="text-2xl font-bold mb-4 text-lime-700">8. Conclusion</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    The developed model successfully predicts the next word using an LSTM architecture, which is effective for capturing sequential dependencies in data. The project confirmed that the model learns to generate contextually relevant words that extend the input text.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="py-6 px-6 text-center text-gray-600 text-sm bg-gray-100">
+        <p>ML Project Documentation &copy; <span id="current-year"></span></p>
+        <p>Aleena Azam, Saba e Yasrab, Zainab Noor</p>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

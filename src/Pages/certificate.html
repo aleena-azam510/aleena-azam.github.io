@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aleena Azam's Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --secondary: #5a033d;
+            --accent: #580d7d;
+            --dark: #370035;
+            --darker: #290029a8;
+            --light: #c25fa9;
+            --lighter: #b77f9c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light); /* Use a light color for the background */
+            color: var(--dark); /* Use a dark color for the text */
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            transform: scale(1);
+        }
+        .glass-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 50px rgba(0, 0, 0, 0.3);
+        }
+        .glass-card h3 {
+            transition: color 0.3s ease-in-out;
+        }
+        .glass-card:hover h3 {
+            color: #75136f; /* Tailwind's indigo-500 */
+        }
+        .header-title {
+            animation: fadeInDown 1s ease-in-out;
+        }
+        .header-subtitle {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .grid-container {
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .card {
+            background-color: #b58fb0;
+            border: 1px solid #3e114c;
+            box-shadow: 0 8px 16px rgba(118, 4, 128, 0.3);
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Animated gradient text */
+        .animated-gradient {
+            background-image: linear-gradient(to right, var(--secondary), var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient-animation 4s ease-in-out infinite;
+        }
+
+    </style>
+</head>
+<body class="bg-[#98759c] text-white min-h-screen">
+
+<header class="py-16">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+        <h1 class="header-title text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 animated-gradient">
+            My Certifications
+        </h1>
+        <p class="header-subtitle text-lg md:text-xl text-black max-w-2xl mx-auto">
+            A comprehensive showcase of my professional development and skills.
+        </p>
+    </div>
+</header>
+
+<main class="py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+        <div class="grid-container grid md:grid-cols-2 lg:grid-cols-3 gap-8 card">
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (1).png" alt="Crash Course on Python certificate from Google" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Crash Course on Python</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">Google — Issued Aug 2025</p>
+                    <p class="text-gray-300 mb-4">
+                        A foundational course on Python for beginners, covering basic programming concepts and syntax.
+                    </p>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/8J2A3S2OOL43" class="text-fuchsia-950 hover:text-purple-700 text-sm font-medium flex items-center" target="_blank" rel="noopener noreferrer">
+                        View Credential <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (2).png" alt="Data Analytics Internship certificate from DevelopersHub" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Data Analytics Internship</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">DevelopersHub Corporation© — Issued Apr 2025</p>
+                    <p class="text-gray-300 mb-4">
+                        Successfully completed a virtual internship, recognized for exceptional performance in data science and analytics.
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (3).png" alt="Data Manipulation with pandas certificate from DataCamp" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Data Manipulation with pandas</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">DataCamp — Issued Mar 2025</p>
+                    <p class="text-300 mb-4">
+                        This certification validates my ability to use the pandas library for data cleaning, transformation, and analysis.
+                    </p>
+                    <a href="https://www.datacamp.com/statement-of-accomplishment/course/39648186" class="text-fuchsia-950 hover:text-purple-700 text-sm font-medium flex items-center" target="_blank" rel="noopener noreferrer">
+                        View Credential <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (4).png" alt="Web Development with HTML5, Python, and Flask certificate from Udemy" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Web Development with HTML5, Python, and Flask</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">Udemy — Issued Mar 2025</p>
+                    <p class="text-gray-300 mb-4">
+                        Comprehensive web development course covering HTML5, Python, and the Flask framework for building web applications.
+                    </p>
+                    <a href="https://www.udemy.com/certificate/UC-b408eb72-e182-4592-a95f-6b081e5439fc" class="text-fuchsia-950 hover:text-purple-700 text-sm font-medium flex items-center" target="_blank" rel="noopener noreferrer">
+                        View Credential <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (6).png" alt="Intermediate Python certificate from DataCamp" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Intermediate Python</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">DataCamp — Issued Mar 2025</p>
+                    <p class="text-gray-300 mb-4">
+                        Builds on foundational Python skills, introducing more advanced concepts for data science.
+                    </p>
+
+                    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/d41ac9e77a4d7f8ebccfbb164393f9e3d87f232d" class="text-fuchsia-950 hover:text-purple-700 text-sm font-medium flex items-center" target="_blank" rel="noopener noreferrer">
+                        View Credential <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (7).png" alt="Introduction to Python certificate from DataCamp" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Introduction to Python</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">DataCamp — Issued Mar 2025</p>
+                    <p class="text-gray-300 mb-4">
+                        A foundational course that equipped me with key programming skills in Python.
+                    </p>
+                    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/ab13070da1a2de538e331f62cd97fbbb579854a4" class="text-fuchsia-950 hover:text-purple-700 text-sm font-medium flex items-center" target="_blank" rel="noopener noreferrer">
+                        View Credential <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (8).png" alt="Joining Data with Pandas certificate from DataCamp" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Joining Data with Pandas</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">DataCamp — Issued Mar 2025</p>
+                    <p class="text-gray-300 mb-4">
+                        Expanding my data science skillset by mastering techniques for joining and merging datasets with pandas.
+                    </p>
+                    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/707df0d0d47202187b736d08901ff8360df17064" class="text-fuchsia-950 hover:text-purple-700 text-sm font-medium flex items-center" target="_blank" rel="noopener noreferrer">
+                        View Credential <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (9).png" alt="Data Analytics Essentials certificate from Cisco" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Data Analytics Essentials</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">Cisco — Issued Feb 2025</p>
+                    <p class="text-gray-300 mb-4">
+                        Enhances my expertise in data analytics, equipping me with skills to analyze and leverage data effectively.
+                    </p>
+                    <a href="https://www.credly.com/badges/abdeeea9-7f33-45a0-906c-16e0ed704946/linked_in_profile" class="text-fuchsia-950 hover:text-purple-700 text-sm font-medium flex items-center" target="_blank" rel="noopener noreferrer">
+                        View Credential <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (10).png" alt="Introduction to Data Science certificate from Cisco" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Introduction to Data Science</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">Cisco — Issued Jan 2025</p>
+                    <p class="text-gray-300 mb-4">
+                        Gained valuable knowledge about the data science landscape and am eager to apply these skills to make an impact.
+                    </p>
+                    <a href="https://www.credly.com/badges/d5825e4f-f509-441c-b5dd-2d31d22c130a/linked_in_profile" class="text-fuchsia-950 hover:text-purple-700 text-sm font-medium flex items-center" target="_blank" rel="noopener noreferrer">
+                        View Credential <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (11).png" alt="Introduction to Modern AI certificate from Cisco" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Introduction to Modern AI</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">Cisco — Issued Jan 2025</p>
+                    <p class="text-gray-300 mb-4">
+                        Expanded my knowledge of AI and am ready to leverage this knowledge to innovate and contribute to the tech landscape.
+                    </p>
+                    <a href="https://www.credly.com/badges/cac7221a-07e2-4428-b4c9-d8e8ee8b4217/linked_in_profile" class="text-fuchsia-950 hover:text-purple-700 text-sm font-medium flex items-center" target="_blank" rel="noopener noreferrer">
+                        View Credential <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (12).png" alt="Python Essentials 1 certificate from Cisco" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Python Essentials 1</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">Cisco — Issued Jan 2025</p>
+                    <p class="text-gray-300 mb-4">
+                        A foundational course on Python that has been a fantastic learning experience for real-world projects.
+                    </p>
+                    <a href="https://www.credly.com/badges/15d864c1-0eb1-478d-8831-6831d582c0e5/linked_in_profile" class="text-fuchsia-950 hover:text-purple-700 text-sm font-medium flex items-center" target="_blank" rel="noopener noreferrer">
+                        View Credential <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (18).png" alt="Python Essentials 2 certificate from Cisco" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Python Essentials 2</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">Cisco — Issued Jan 2025</p>
+                    <p class="text-gray-300 mb-4">
+                        Provided a solid foundation in designing, developing, and debugging Python programs.
+                    </p>
+                    <a href="https://www.credly.com/badges/74134ab3-4781-4418-8bc7-24a1b3f18c69/linked_in_profile" class="text-fuchsia-950 hover:text-purple-700 text-sm font-medium flex items-center" target="_blank" rel="noopener noreferrer">
+                        View Credential <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (13).png" alt="Content Writing certificate from NS Training" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Content Writing</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">NS Training (SMC-PRIVATE) Limited — Issued Sep 2024</p>
+                    <p class="text-gray-300 mb-4">
+                        A certified content writer with a proven ability to create engaging and informative content.
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (14).png" alt="Freelancing certificate from NS Training" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Freelancing</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">NS Training (SMC-PRIVATE) Limited — Issued Sep 2024</p>
+                    <p class="text-gray-300 mb-4">
+                        This certificate signifies my readiness to excel in a freelance career and work remotely.
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (15).png" alt="Graphic Designing certificate from NS Training" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Graphic Designing</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">NS Training (SMC-PRIVATE) Limited — Issued Sep 2024</p>
+                    <p class="text-gray-300 mb-4">
+                        Completed a comprehensive course, enhancing skills in visual design principles and software.
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (19).png" alt="Social Media Marketing certificate from NS Training" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Social Media Marketing</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">NS Training (SMC-PRIVATE) Limited — Issued Sep 2024</p>
+                    <p class="text-gray-300 mb-4">
+                        Acquired a comprehensive understanding of digital marketing strategies and social media management.
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (16).png" alt="Data Analyst certificate from IMCS" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-black">Data Analyst</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">Institute of Mathematics & Computer Science (IMCS) — Issued May 2024</p>
+                    <p class="text-gray-300 mb-4">
+                        Successfully completed a comprehensive data science project, demonstrating proficiency in data collection, analysis, and visualization.
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+                <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
+                    <img src="../images/cert (17).png" alt="Participation Certificate from IMCS" class="h-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2  text-black">Participation Certificate</h3>
+                    <p class="text-fuchsia-950 text-sm mb-4">Institute of Mathematics & Computer Science (IMCS) — Issued Feb 2024</p>
+                    <p class="text-gray-300 mb-4">
+                        Proud to have participated in the IMCS TechVerve 2024 event, which was a great opportunity to learn.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="py-6 px-6 text-center text-gray-800 text-sm">
+    <p>&copy; <span id="current-year"></span> Aleena Azam. All Rights Reserved.</p>
+</footer>
+<script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
