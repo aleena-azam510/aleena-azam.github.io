@@ -257,7 +257,7 @@
 .particle {
     position: absolute;
     /* Updated gradient to purple and fuchsia */
-    background: linear-gradient(to right, #800080, #ff00ff); 
+    background: linear-gradient(to right, #800080, #cab0ca); 
     border-radius: 50%;
     opacity: 0.5; /* Slightly increased opacity for better visibility */
     animation: floatParticle 20s infinite linear; /* Adjusted animation duration */
@@ -526,7 +526,7 @@
 
     <!-- Hero Section -->
     <section id="hero" class="relative py-32 text-center dot-matrix-bg">
-        <div class="particles-container bg-purple-300" id="particles"></div>
+        <div class="particles-container bg-purple-200" id="particles"></div>
         <div class="relative z-10 max-w-7xl mx-auto px-6 space-y-4">
             <p class="text-xl text-black font-medium fade-in delay-100">Hello, I'm</p>
             <h2 class="text-5xl md:text-8xl font-black text-white animated-gradient slide-up delay-200">Aleena Azam.</h2>
@@ -688,9 +688,9 @@
     <p class="text-fuchsia-200 mb-12 text-center max-w-2xl mx-auto">
         An investment in knowledge pays the best interest.
     </p>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 card">
-            <div class="certification-card glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+<!-- certification  -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="certification-card glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl card">
                 <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
                     <img src="src\images\cert (1).png" alt="Crash Course on Python certificate from Google" class="h-full object-contain">
                 </div>
@@ -706,7 +706,7 @@
                 </div>
             </div>
 
-            <div class="certification-card glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+            <div class="certification-card glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl card">
                 <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
                     <img src="src\images\cert (2).png" alt="Data Analytics Internship certificate from DevelopersHub" class="h-full object-contain">
                 </div>
@@ -719,7 +719,7 @@
                 </div>
             </div>
 
-            <div class="certification-card glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+            <div class="certification-card glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl card">
                 <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
                     <img src="src\images\cert (3).png" alt="Data Manipulation with pandas certificate from DataCamp" class="h-full object-contain">
                 </div>
@@ -735,7 +735,7 @@
                 </div>
             </div>
 
-            <div class="certification-card glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+            <div class="certification-card glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl card">
                 <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
                     <img src="src\images\cert (4).png" alt="Web Development with HTML5, Python, and Flask certificate from Udemy" class="h-full object-contain">
                 </div>
@@ -751,7 +751,7 @@
                 </div>
             </div>
 
-            <div class="certification-card glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+            <div class="certification-card glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl card">
                 <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
                     <img src="src\images\cert (6).png" alt="Intermediate Python certificate from DataCamp" class="h-full object-contain">
                 </div>
@@ -761,10 +761,14 @@
                     <p class="text-gray-300 mb-4">
                         Builds on foundational Python skills, introducing more advanced concepts for data science.
                     </p>
+                    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/d41ac9e77a4d7f8ebccfbb164393f9e3d87f232d" class="text-fuchsia-950 hover:text-purple-700 text-sm font-medium flex items-center" target="_blank" rel="noopener noreferrer">
+                        View Credential <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                    </a>
                 </div>
+                
             </div>
 
-            <div class="certification-card glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+            <div class="certification-card glass-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl card">
                 <div class="h-48 bg-indigo-900/30 flex items-center justify-center p-6">
                     <img src="src\images\cert (7).png" alt="Introduction to Python certificate from DataCamp" class="h-full object-contain">
                 </div>
@@ -774,6 +778,9 @@
                     <p class="text-gray-300 mb-4">
                         A foundational course that equipped me with key programming skills in Python.
                     </p>
+                    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/ab13070da1a2de538e331f62cd97fbbb579854a4" class="text-fuchsia-950 hover:text-purple-700 text-sm font-medium flex items-center" target="_blank" rel="noopener noreferrer">
+                        View Credential <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -872,7 +879,7 @@
                         <i class="fas fa-cogs text-white text-xl"></i>
                     </div>
                     <h5 class="font-bold text-white">Software Engineering</h5>
-                    <p class="text-fuchsia-200 text-sm">OOP, Agile, Scrum, SDLC</p>
+                    <p class="text-fuchsia-200 text-sm">OOP, Agile, SDLC</p>
                 </div>
                 
                 <div class="text-center slide-up delay-300">
@@ -1081,38 +1088,38 @@
    
     <!-- Tools & Platform-->
     <section id="tools" class="py-24 bg-[#86658a]">
-        <div class="max-w-7xl mx-auto px-6 bg-gradient-to-r card">
+        <div class="max-w-7xl mx-auto px-6 bg-gradient-to-r">
             <h3 class="text-4xl md:text-5xl font-bold text-center mb-16 animated-gradient fade-in">Technical Tools & Platforms</h3>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center slide-up delay-100">
+                <div class="text-center slide-up delay-100 card">
                     <i class="fab fa-microsoft text-5xl text-fuchsia-950 mb-4"></i>
                     <h5 class="font-bold text-white">Visual Studio Code</h5>
                 </div>
-                <div class="text-center slide-up delay-200">
+                <div class="text-center slide-up delay-200 card">
                     <i class="fab fa-google text-5xl text-fuchsia-950 mb-4"></i>
                     <h5 class="font-bold text-white">Google Cloud</h5>
                 </div>
-                <div class="text-center slide-up delay-300">
+                <div class="text-center slide-up delay-300 card">
                     <i class="fab fa-git-alt text-5xl text-fuchsia-950 mb-4"></i>
                     <h5 class="font-bold text-white">Git, GitHub, GitLab</h5>
                 </div>
-                <div class="text-center slide-up delay-400">
+                <div class="text-center slide-up delay-400 card">
                     <i class="fas fa-database text-5xl text-fuchsia-950 mb-4"></i>
                     <h5 class="font-bold text-white">MySQL Workbench</h5>
                 </div>
-                <div class="text-center slide-up delay-100">
+                <div class="text-center slide-up delay-100 card">
                     <i class="fas fa-chart-bar text-5xl text-fuchsia-950 mb-4"></i>
                     <h5 class="font-bold text-white">Seaborn, Pandas</h5>
                 </div>
-                <div class="text-center slide-up delay-200">
+                <div class="text-center slide-up delay-200 card">
                     <i class="fas fa-desktop text-5xl text-fuchsia-950 mb-4"></i>
                     <h5 class="font-bold text-white">Jupyter</h5>
                 </div>
-                <div class="text-center slide-up delay-300">
+                <div class="text-center slide-up delay-300 card">
                     <i class="fas fa-chart-pie text-5xl text-fuchsia-950 mb-4"></i>
                     <h5 class="font-bold text-white">Power BI, Tableau</h5>
                 </div>
-                <div class="text-center slide-up delay-400">
+                <div class="text-center slide-up delay-400 card">
                     <i class="fas fa-chart-line text-5xl text-fuchsia-950 mb-4"></i>
                     <h5 class="font-bold text-white">Google Analytics</h5>
                 </div>
