@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aleena Azam | Certifications Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            overflow-x: hidden;
+        }
+        
+        /* Glass morphism card effect - Light theme */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1rem;
+            border: 1px solid rgba(13, 148, 136, 0.15);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(13, 148, 136, 0.4);
+            box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Animated gradient text */
+        .animated-gradient {
+            background: linear-gradient(135deg, #0D9488, #14B8A6, #0F172A);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientShift 4s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Fade animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .cert-card {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .cert-card:nth-child(1) { animation-delay: 0.05s; }
+        .cert-card:nth-child(2) { animation-delay: 0.1s; }
+        .cert-card:nth-child(3) { animation-delay: 0.15s; }
+        .cert-card:nth-child(4) { animation-delay: 0.2s; }
+        .cert-card:nth-child(5) { animation-delay: 0.25s; }
+        .cert-card:nth-child(6) { animation-delay: 0.3s; }
+        .cert-card:nth-child(7) { animation-delay: 0.35s; }
+        .cert-card:nth-child(8) { animation-delay: 0.4s; }
+        .cert-card:nth-child(9) { animation-delay: 0.45s; }
+        .cert-card:nth-child(10) { animation-delay: 0.5s; }
+        .cert-card:nth-child(11) { animation-delay: 0.55s; }
+        .cert-card:nth-child(12) { animation-delay: 0.6s; }
+        .cert-card:nth-child(13) { animation-delay: 0.65s; }
+        .cert-card:nth-child(14) { animation-delay: 0.7s; }
+        .cert-card:nth-child(15) { animation-delay: 0.75s; }
+        .cert-card:nth-child(16) { animation-delay: 0.8s; }
+        .cert-card:nth-child(17) { animation-delay: 0.85s; }
+        .cert-card:nth-child(18) { animation-delay: 0.9s; }
+        
+        /* Floating animation for icons */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Scroll to top button - Light theme */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: #0D9488;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            background: #14B8A6;
+            transform: translateY(-3px);
+        }
+        
+        /* Particle background - Light theme */
+        .particle {
+            position: absolute;
+            background: rgba(13, 148, 136, 0.15);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: floatParticle 20s infinite linear;
+        }
+        
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% { opacity: 0.2; }
+            90% { opacity: 0.2; }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* custom image container inside card to keep aspect */
+        .cert-img-container {
+            height: 150px;
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(13, 148, 136, 0.15);
+        }
+        .cert-img-container img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+            transition: transform 0.2s ease;
+        }
+        .glass-card:hover .cert-img-container img {
+            transform: scale(1.02);
+        }
+        
+        /* Filter button active state - Light theme */
+        .filter-btn.active {
+            background-color: #0D9488 !important;
+            color: white !important;
+        }
+        
+        .filter-btn:not(.active) {
+            background-color: #f1f5f9;
+            color: #334155;
+        }
+        
+        .filter-btn:not(.active):hover {
+            background-color: #e2e8f0;
+            color: #0D9488;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+    
+    <!-- Particle Background -->
+    <div id="particles" class="fixed inset-0 overflow-hidden pointer-events-none"></div>
+    
+    <!-- Header/Navigation - Light theme -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-extrabold animated-gradient">Aleena Azam</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html#about" class="text-gray-700 hover:text-teal-600 transition duration-300">About</a>
+                <a href="index.html#experience" class="text-gray-700 hover:text-teal-600 transition duration-300">Experience</a>
+                <a href="index.html#skills" class="text-gray-700 hover:text-teal-600 transition duration-300">Skills</a>
+                <a href="index.html#projects" class="text-gray-700 hover:text-teal-600 transition duration-300">Projects</a>
+                <a href="index.html#contact" class="text-gray-700 hover:text-teal-600 transition duration-300">Contact</a>
+            </div>
+            <a href="index.html" class="px-4 py-2 bg-teal-600 hover:bg-teal-500 text-white rounded-lg transition duration-300 text-sm font-medium shadow-md">
+                ← Back to Portfolio
+            </a>
+        </nav>
+    </header>
+
+    <!-- Certifications Section (Light Theme) -->
+    <section id="certifications" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <div class="inline-block px-4 py-1 bg-teal-100 rounded-full border border-teal-200 mb-6">
+                    <span class="text-teal-700 text-sm font-medium">My Achievements</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    <span class="bg-gradient-to-r from-teal-600 to-teal-800 bg-clip-text text-transparent">Certifications</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-teal-500 to-teal-600 mx-auto mb-6 rounded-full"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    An investment in knowledge pays the best interest. Here are my professional certifications and achievements.
+                </p>
+            </div>
+
+            <!-- Stats Bar - Light theme -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+                <div class="bg-white rounded-xl p-4 text-center border border-gray-200 shadow-sm">
+                    <div class="text-3xl font-bold text-teal-600">18</div>
+                    <div class="text-gray-500 text-sm">Certifications</div>
+                </div>
+                <div class="bg-white rounded-xl p-4 text-center border border-gray-200 shadow-sm">
+                    <div class="text-3xl font-bold text-teal-600">8+</div>
+                    <div class="text-gray-500 text-sm">Platforms</div>
+                </div>
+                <div class="bg-white rounded-xl p-4 text-center border border-gray-200 shadow-sm">
+                    <div class="text-3xl font-bold text-teal-600">2024-26</div>
+                    <div class="text-gray-500 text-sm">Years Active</div>
+                </div>
+                <div class="bg-white rounded-xl p-4 text-center border border-gray-200 shadow-sm">
+                    <div class="text-3xl font-bold text-teal-600">100+</div>
+                    <div class="text-gray-500 text-sm">Hours Learned</div>
+                </div>
+            </div>
+
+            <!-- Filter Buttons - Light theme -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="filter-btn active px-4 py-2 rounded-full bg-teal-600 text-white text-sm font-medium transition-all" data-filter="all">All</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-teal-100 text-sm font-medium transition-all" data-filter="google">Google</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-teal-100 text-sm font-medium transition-all" data-filter="datacamp">DataCamp</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-teal-100 text-sm font-medium transition-all" data-filter="cisco">Cisco</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-teal-100 text-sm font-medium transition-all" data-filter="other">Other</button>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Google IT Automation with Python Professional Certificate (v.1) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="google">
+                    <div class="cert-img-container">
+                        <img src="../images/CERT 20.png" alt="Google IT Automation with Python Professional Certificate">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Google IT Automation with Python Professional Certificate (v.1)</h3>
+                        <p class="text-teal-600 text-xs mb-2">Coursera — Issued Apr 2026</p>
+                        <p class="text-gray-600 text-sm mb-3">Professional certification covering IT automation, Python scripting, and system administration.</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">Show credential →</a>
+                    </div>
+                </div>
+
+                <!-- Google IT Automation with Python -->
+                <div class="cert-card glass-card overflow-hidden" data-category="google">
+                    <div class="cert-img-container">
+                        <img src="../images/CERT 21.png" alt="Google IT Automation with Python">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Google IT Automation with Python</h3>
+                        <p class="text-teal-600 text-xs mb-2">Google — Issued Oct 2025</p>
+                        <p class="text-gray-500 text-xs mb-1">Credential ID: 3A2HRFCSNYUM</p>
+                        <p class="text-gray-600 text-sm mb-3">Comprehensive automation skills using Python for IT tasks and system operations.</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">Show credential →</a>
+                    </div>
+                </div>
+
+                <!-- Automating Real-World Tasks with Python -->
+                <div class="cert-card glass-card overflow-hidden" data-category="google">
+                    <div class="cert-img-container">
+                        <img src="../images/CERT 22.png" alt="Automating Real-World Tasks with Python">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Automating Real-World Tasks with Python</h3>
+                        <p class="text-teal-600 text-xs mb-2">Google — Issued Oct 2025</p>
+                        <p class="text-gray-500 text-xs mb-1">Credential ID: 1OFWF2912BOU</p>
+                        <p class="text-gray-600 text-sm mb-3">Practical automation of real-world tasks using Python scripts and libraries.</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">Show credential →</a>
+                    </div>
+                </div>
+
+                <!-- Configuration Management and the Cloud -->
+                <div class="cert-card glass-card overflow-hidden" data-category="google">
+                    <div class="cert-img-container">
+                        <img src="../images/CERT 23.png" alt="Configuration Management and the Cloud">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Configuration Management and the Cloud</h3>
+                        <p class="text-teal-600 text-xs mb-2">Google — Issued Oct 2025</p>
+                        <p class="text-gray-500 text-xs mb-1">Credential ID: I8V0MJCLO2WF</p>
+                        <p class="text-gray-600 text-sm mb-3">Cloud infrastructure management and configuration automation techniques.</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">Show credential →</a>
+                    </div>
+                </div>
+
+                <!-- Troubleshooting and Debugging Techniques -->
+                <div class="cert-card glass-card overflow-hidden" data-category="google">
+                    <div class="cert-img-container">
+                        <img src="../images/CERT 24.png" alt="Troubleshooting and Debugging Techniques">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Troubleshooting and Debugging Techniques</h3>
+                        <p class="text-teal-600 text-xs mb-2">Google — Issued Oct 2025</p>
+                        <p class="text-gray-500 text-xs mb-1">Credential ID: 4ZJLTK4P319S</p>
+                        <p class="text-gray-600 text-sm mb-3">Systematic debugging approaches and problem-solving strategies for IT systems.</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">Show credential →</a>
+                    </div>
+                </div>
+
+                <!-- Internship Certificate - Mehran Sugar Mills Limited -->
+                <div class="cert-card glass-card overflow-hidden" data-category="other">
+                    <div class="cert-img-container">
+                        <img src="../images/CERT 25.png" alt="Internship Certificate Mehran Sugar Mills">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Internship Certificate</h3>
+                        <p class="text-teal-600 text-xs mb-2">Mehran Sugar Mills Limited — Issued 2025</p>
+                        <p class="text-gray-600 text-sm mb-3">Officially done with my internship at Mehran Sugar Mills Limited! It was a great 3-month experience, and I learned so much. Thank you to the team for the opportunity.</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">Show credential →</a>
+                    </div>
+                </div>
+
+                <!-- Introduction to Git and GitHub -->
+                <div class="cert-card glass-card overflow-hidden" data-category="google">
+                    <div class="cert-img-container">
+                        <img src="../images/CERT 26.png" alt="Introduction to Git and GitHub">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Introduction to Git and GitHub</h3>
+                        <p class="text-teal-600 text-xs mb-2">Google — Issued Sep 2025</p>
+                        <p class="text-gray-500 text-xs mb-1">Credential ID: 1KMVU1TSL3GT</p>
+                        <p class="text-gray-600 text-sm mb-3">Version control fundamentals using Git and collaborative development on GitHub.</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">Show credential →</a>
+                    </div>
+                </div>
+
+                <!-- Using Python to Interact with the Operating System -->
+                <div class="cert-card glass-card overflow-hidden" data-category="google">
+                    <div class="cert-img-container">
+                        <img src="../images/CERT 27.png" alt="Using Python to Interact with the Operating System">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Using Python to Interact with the Operating System</h3>
+                        <p class="text-teal-600 text-xs mb-2">Google — Issued Sep 2025</p>
+                        <p class="text-gray-500 text-xs mb-1">Credential ID: WUOMLPCSCRJB</p>
+                        <p class="text-gray-600 text-sm mb-3">Python scripting for OS interaction, file handling, and system automation tasks.</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">Show credential →</a>
+                    </div>
+                </div>
+
+                <!-- 1. Crash Course on Python (Google) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="google">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(1).png" alt="Crash Course on Python certificate">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Crash Course on Python</h3>
+                        <p class="text-teal-600 text-xs mb-2">Google — Issued Aug 2025</p>
+                        <p class="text-gray-600 text-sm mb-3">A foundational course on Python for beginners, covering basic programming concepts and syntax.</p>
+                        <a href="https://www.coursera.org/account/accomplishments/verify/8J2A3S2OOL43" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Credential →</a>
+                    </div>
+                </div>
+
+                <!-- 2. Data Analytics Internship (DevelopersHub) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="other">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(2).png" alt="Data Analytics Internship certificate">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Data Analytics Internship</h3>
+                        <p class="text-teal-600 text-xs mb-2">DevelopersHub Corporation — Issued Apr 2025</p>
+                        <p class="text-gray-600 text-sm mb-3">Successfully completed a virtual internship, recognized for exceptional performance in data science and analytics.</p>
+                        <span class="inline-flex items-center text-gray-500 text-xs"><i class="fas fa-check-circle mr-1 text-teal-500"></i> verified certificate</span>
+                    </div>
+                </div>
+
+                <!-- 3. Data Manipulation with pandas (DataCamp) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="datacamp">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(3).png" alt="Data Manipulation with pandas">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Data Manipulation with pandas</h3>
+                        <p class="text-teal-600 text-xs mb-2">DataCamp — Issued Mar 2025</p>
+                        <p class="text-gray-600 text-sm mb-3">Validates ability to use pandas library for data cleaning, transformation, and analysis.</p>
+                        <a href="https://www.datacamp.com/statement-of-accomplishment/course/39648186" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Credential →</a>
+                    </div>
+                </div>
+
+                <!-- 4. Web Development with HTML5, Python, Flask (Udemy) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="other">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(4).png" alt="Web Development Flask">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Web Development with HTML5, Python, Flask</h3>
+                        <p class="text-teal-600 text-xs mb-2">Udemy — Issued Mar 2025</p>
+                        <p class="text-gray-600 text-sm mb-3">Comprehensive web development course covering HTML5, Python, and Flask framework.</p>
+                        <a href="https://www.udemy.com/certificate/UC-b408eb72-e182-4592-a95f-6b081e5439fc" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Credential →</a>
+                    </div>
+                </div>
+
+                <!-- 5. Intermediate Python (DataCamp) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="datacamp">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(6).png" alt="Intermediate Python">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Intermediate Python</h3>
+                        <p class="text-teal-600 text-xs mb-2">DataCamp — Issued Mar 2025</p>
+                        <p class="text-gray-600 text-sm mb-3">Builds on foundational Python skills, introducing advanced concepts for data science.</p>
+                        <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/d41ac9e77a4d7f8ebccfbb164393f9e3d87f232d" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Credential →</a>
+                    </div>
+                </div>
+
+                <!-- 6. Introduction to Python (DataCamp) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="datacamp">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(7).png" alt="Introduction to Python">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Introduction to Python</h3>
+                        <p class="text-teal-600 text-xs mb-2">DataCamp — Issued Mar 2025</p>
+                        <p class="text-gray-600 text-sm mb-3">Foundational course equipping with key programming skills in Python.</p>
+                        <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/ab13070da1a2de538e331f62cd97fbbb579854a4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Credential →</a>
+                    </div>
+                </div>
+
+                <!-- 7. Joining Data with Pandas (DataCamp) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="datacamp">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(8).png" alt="Joining Data with Pandas">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Joining Data with Pandas</h3>
+                        <p class="text-teal-600 text-xs mb-2">DataCamp — Issued Mar 2025</p>
+                        <p class="text-gray-600 text-sm mb-3">Mastering techniques for joining and merging datasets with pandas.</p>
+                        <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/707df0d0d47202187b736d08901ff8360df17064" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Credential →</a>
+                    </div>
+                </div>
+
+                <!-- 8. Data Analytics Essentials (Cisco) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="cisco">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(9).png" alt="Data Analytics Essentials Cisco">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Data Analytics Essentials</h3>
+                        <p class="text-teal-600 text-xs mb-2">Cisco — Issued Feb 2025</p>
+                        <p class="text-gray-600 text-sm mb-3">Enhances expertise in data analytics, equipping skills to analyze and leverage data effectively.</p>
+                        <a href="https://www.credly.com/badges/abdeeea9-7f33-45a0-906c-16e0ed704946/linked_in_profile" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Credential →</a>
+                    </div>
+                </div>
+
+                <!-- 9. Introduction to Data Science (Cisco) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="cisco">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(10).png" alt="Introduction to Data Science Cisco">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Introduction to Data Science</h3>
+                        <p class="text-teal-600 text-xs mb-2">Cisco — Issued Jan 2025</p>
+                        <p class="text-gray-600 text-sm mb-3">Gained valuable knowledge about data science landscape and applications.</p>
+                        <a href="https://www.credly.com/badges/d5825e4f-f509-441c-b5dd-2d31d22c130a/linked_in_profile" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Credential →</a>
+                    </div>
+                </div>
+
+                <!-- 10. Introduction to Modern AI (Cisco) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="cisco">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(11).png" alt="Introduction to Modern AI Cisco">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Introduction to Modern AI</h3>
+                        <p class="text-teal-600 text-xs mb-2">Cisco — Issued Jan 2025</p>
+                        <p class="text-gray-600 text-sm mb-3">Expanded knowledge of AI, ready to innovate and contribute to the tech landscape.</p>
+                        <a href="https://www.credly.com/badges/cac7221a-07e2-4428-b4c9-d8e8ee8b4217/linked_in_profile" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Credential →</a>
+                    </div>
+                </div>
+
+                <!-- 11. Python Essentials 1 (Cisco) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="cisco">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(12).png" alt="Python Essentials 1 Cisco">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Python Essentials 1</h3>
+                        <p class="text-teal-600 text-xs mb-2">Cisco — Issued Jan 2025</p>
+                        <p class="text-gray-600 text-sm mb-3">Foundational Python course for real-world projects.</p>
+                        <a href="https://www.credly.com/badges/15d864c1-0eb1-478d-8831-6831d582c0e5/linked_in_profile" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Credential →</a>
+                    </div>
+                </div>
+
+                <!-- 12. Python Essentials 2 (Cisco) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="cisco">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(18).png" alt="Python Essentials 2 Cisco">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Python Essentials 2</h3>
+                        <p class="text-teal-600 text-xs mb-2">Cisco — Issued Jan 2025</p>
+                        <p class="text-gray-600 text-sm mb-3">Solid foundation in designing, developing, and debugging Python programs.</p>
+                        <a href="https://www.credly.com/badges/74134ab3-4781-4418-8bc7-24a1b3f18c69/linked_in_profile" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Credential →</a>
+                    </div>
+                </div>
+
+                <!-- 13. Content Writing (NS Training) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="other">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(13).png" alt="Content Writing">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Content Writing</h3>
+                        <p class="text-teal-600 text-xs mb-2">NS Training — Issued Sep 2024</p>
+                        <p class="text-gray-600 text-sm mb-3">Certified content writer with proven ability to create engaging and informative content.</p>
+                        <span class="inline-flex items-center text-gray-500 text-xs"><i class="fas fa-certificate mr-1 text-teal-500"></i> Institution credential</span>
+                    </div>
+                </div>
+
+                <!-- 14. Freelancing (NS Training) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="other">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(14).png" alt="Freelancing">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Freelancing</h3>
+                        <p class="text-teal-600 text-xs mb-2">NS Training — Issued Sep 2024</p>
+                        <p class="text-gray-600 text-sm mb-3">Signifies readiness to excel in a freelance career and work remotely.</p>
+                        <span class="inline-flex items-center text-gray-500 text-xs"><i class="fas fa-laptop-house mr-1 text-teal-500"></i> professional certification</span>
+                    </div>
+                </div>
+
+                <!-- 15. Graphic Designing (NS Training) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="other">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(15).png" alt="Graphic Designing">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Graphic Designing</h3>
+                        <p class="text-teal-600 text-xs mb-2">NS Training — Issued Sep 2024</p>
+                        <p class="text-gray-600 text-sm mb-3">Comprehensive course enhancing skills in visual design principles and software.</p>
+                        <span class="inline-flex items-center text-gray-500 text-xs"><i class="fas fa-palette mr-1 text-teal-500"></i> certified designer</span>
+                    </div>
+                </div>
+
+                <!-- 16. Social Media Marketing (NS Training) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="other">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(19).png" alt="Social Media Marketing">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Social Media Marketing</h3>
+                        <p class="text-teal-600 text-xs mb-2">NS Training — Issued Sep 2024</p>
+                        <p class="text-gray-600 text-sm mb-3">Comprehensive understanding of digital marketing strategies and social media management.</p>
+                        <span class="inline-flex items-center text-gray-500 text-xs"><i class="fas fa-share-alt mr-1 text-teal-500"></i> SMM certified</span>
+                    </div>
+                </div>
+
+                <!-- 17. Data Analyst (IMCS) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="other">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(16).png" alt="Data Analyst IMCS">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Data Analyst</h3>
+                        <p class="text-teal-600 text-xs mb-2">IMCS — Issued May 2024</p>
+                        <p class="text-gray-600 text-sm mb-3">Comprehensive data science project demonstrating proficiency in data collection, analysis, and visualization.</p>
+                        <span class="inline-flex items-center text-gray-500 text-xs"><i class="fas fa-chart-bar mr-1 text-teal-500"></i> project-based certification</span>
+                    </div>
+                </div>
+
+                <!-- 18. Participation Certificate (IMCS) -->
+                <div class="cert-card glass-card overflow-hidden" data-category="other">
+                    <div class="cert-img-container">
+                        <img src="../images/cert%20(17).png" alt="Participation IMCS">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Participation Certificate</h3>
+                        <p class="text-teal-600 text-xs mb-2">IMCS — Issued Feb 2024</p>
+                        <p class="text-gray-600 text-sm mb-3">Participated in IMCS TechVerve 2024 event, a great opportunity to learn.</p>
+                        <span class="inline-flex items-center text-gray-500 text-xs"><i class="fas fa-users mr-1 text-teal-500"></i> event recognition</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Filter Script -->
+    <script>
+        // Generate particles dynamically (light theme)
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for(let i = 0; i < 45; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 6 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                particle.style.opacity = Math.random() * 0.3;
+                particlesContainer.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Certification filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active button styles
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active', 'bg-teal-600', 'text-white');
+                    btn.classList.add('bg-gray-200', 'text-gray-700');
+                });
+                this.classList.remove('bg-gray-200', 'text-gray-700');
+                this.classList.add('active', 'bg-teal-600', 'text-white');
+                
+                const filter = this.getAttribute('data-filter');
+                const certCards = document.querySelectorAll('.cert-card');
+                
+                certCards.forEach(card => {
+                    if (filter === 'all') {
+                        card.style.display = 'flex';
+                    } else {
+                        const category = card.getAttribute('data-category');
+                        if (category === filter) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Scroll to top
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('scrollTopBtn');
+            if (window.scrollY > 500) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+
+</html>

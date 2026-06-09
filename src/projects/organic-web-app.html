@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Web App - Aleena Azam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+           --primary: #8b5cf6;
+            --secondary: #5a033d;
+            --accent: #580d7d;
+            --dark: #370035;
+            --darker: #290029a8;
+            --light: #c25fa9;
+            --lighter: #b77f9c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #c2e6b7;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            transform: scale(1);
+        }
+
+        .glass-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .animated-gradient {
+            background-image: linear-gradient(to right, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient-animation 4s ease-in-out infinite;
+        }
+
+        .card {
+            background-color: #b58fb0;
+            border: 1px solid #3e114c;
+            box-shadow: 0 8px 16px rgba(74, 107, 46, 0.3);
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 1s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .code-block {
+            background-color: #2d2d2d;
+            color: #ccc;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body class="bg-[#98759c] text-[#370035] min-h-screen">
+
+    <header class="py-16">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h1 class="header-title text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 animated-gradient">
+                Organic Web App
+            </h1>
+            <p class="header-subtitle text-lg md:text-xl text-[#3f3939] max-w-2xl mx-auto">
+                A full-stack e-commerce platform for organic products.
+            </p>
+        </div>
+    </header>
+
+    <main class="py-12 px-6">
+        <div class="max-w-4xl mx-auto">
+
+            <section class="mb-12 glass-card p-8 slide-up delay-100 card">
+                <h2 class="text-2xl font-bold mb-4 text-[#370035]">📝 About This Project</h2>
+                <p class="text-gray-300 leading-relaxed">
+                    This project is a complete e-commerce platform developed for an organic food brand. It is a full-stack application that provides users with a seamless shopping experience, from browsing products to secure checkout. The focus was on building a robust backend and an intuitive user interface.
+                </p>
+            </section>
+
+            <section class="mb-12 glass-card p-8 slide-up delay-200 card">
+                <h2 class="text-2xl font-bold mb-4 text-[#370035]">🛠️ Key Features</h2>
+                <ul class="list-disc list-inside text-gray-300 leading-relaxed space-y-2">
+                    <li><strong>Product Catalog:</strong> Browse and search for a variety of organic products.</li>
+                    <li><strong>Shopping Cart:</strong> Add, remove, and manage items in a shopping cart before checkout.</li>
+                    <li><strong>User Authentication:</strong> Secure user registration, login, and profile management.</li>
+                    <li><strong>Admin Panel:</strong> An administrative interface for managing products, orders, and users.</li>
+                    <li><strong>Responsive Design:</strong> The website is fully responsive, ensuring a great user experience on all devices.</li>
+                </ul>
+            </section>
+
+            <section class="mb-12 glass-card p-8 slide-up delay-300 card">
+                <h2 class="text-2xl font-bold mb-4 text-[#370035]">⚙️ Technical Stack</h2>
+                <p class="text-gray-300 leading-relaxed mb-4">
+                    The application is built with a powerful and popular technology stack.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2 text-[#4a6b2e]">Backend</h4>
+                        <ul class="list-disc list-inside text-gray-300 space-y-1">
+                            <li>Python</li>
+                            <li>Django Framework</li>
+                            <li>SQLite (development)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2 text-[#4a6b2e]">Frontend</h4>
+                        <ul class="list-disc list-inside text-gray-300 space-y-1">
+                            <li>HTML5</li>
+                            <li>CSS3 & Bootstrap</li>
+                            <li>Jinja2 Templating</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-12 glass-card p-8 slide-up delay-400 card">
+                <h2 class="text-2xl font-bold mb-4 text-[#370035]">💻 Code & Methodology</h2>
+                <p class="text-gray-300 leading-relaxed mb-4">
+                    The project follows a standard Model-View-Controller (MVC) architectural pattern, as implemented by the Django framework. The code is modular and organized into different Django apps for better maintainability.
+                </p>
+                <h3 class="text-xl font-semibold mt-6 mb-2 text-[#4a6b2e]">Folder Structure (as shown in the image)</h3>
+                <pre class="code-block">
+<code>
+organic-web-app/
+├── Base_App/
+├── Static/
+├── Template/
+│   ├── about.html
+│   ├── base.html
+│   ├── contact.html
+│   └── ...
+├── organic_web_app/
+├── db.sqlite3
+└── manage.py
+</code>
+                </pre>
+            </section>
+
+            <section class="mb-12 glass-card p-8 slide-up delay-500 card">
+                <h2 class="text-2xl font-bold mb-4 text-[#370035]">🖼️ Key Screenshots</h2>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    These screenshots highlight the main features and user interface of the Organic Web App.
+                </p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <img src="../images/organic-app (1).png" alt="Main page of the organic e-commerce store" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+                    <img src="../images/organic-app (2).png" alt="Product details page showing an item and its description" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+                    <img src="../images/organic-app (3).png" alt="The shopping cart and checkout process" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+                    <img src="../images/organic-app (4).png" alt="User profile and login screen" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+                </div>
+            </section>
+
+            <section class="mb-12 glass-card p-8 slide-up delay-600 card">
+                <h2 class="text-2xl font-bold mb-4 text-[#370035]">💡 Learnings & Future Scope</h2>
+                <p class="text-gray-300 leading-relaxed">
+                    This project was a deep dive into **full-stack development** using Python and Django. It taught me the importance of a well-structured project, proper database management, and secure user authentication. Future improvements could include implementing a payment gateway, adding product reviews, and integrating a search functionality with filtering options.
+                </p>
+            </section>
+
+            <div class="text-center slide-up delay-700">
+                <a href="/index.html#projects" class="inline-block px-8 py-3 rounded-full text-white bg-[#4a6b2e] hover:bg-[#609139] transition duration-300 font-semibold shadow-lg">
+                    ← Back to Projects
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-6 px-6 text-center text-gray-800 text-sm">
+        <p>&copy; <span id="current-year"></span> Aleena Azam. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

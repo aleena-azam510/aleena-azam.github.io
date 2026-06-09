@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aleena Azam · AI Engineer Portfolio</title>
+    <!-- Tailwind + Fonts + Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;   /* unchanged original bg-section */
+            color: #0F172A;
+            overflow-x: hidden;
+            transition: background 0.2s ease;
+        }
+        /* Dark mode background keeps exactly the same original dark colors */
+        [data-theme="dark"] body {
+            background-color: #0F172A;
+            color: #F1F5F9;
+        }
+        [data-theme="dark"] .bg-white, [data-theme="dark"] .bg-gray-50 {
+            background-color: #0F172A !important;
+        }
+        [data-theme="dark"] .bg-gray-50 {
+            background-color: #0F172A !important;
+        }
+        [data-theme="dark"] header {
+            background-color: #0F172A !important;
+            border-color: #1E293B !important;
+        }
+        [data-theme="dark"] .text-gray-700, [data-theme="dark"] .text-gray-600, [data-theme="dark"] .text-gray-800 {
+            color: #CBD5E1 !important;
+        }
+        [data-theme="dark"] .card, [data-theme="dark"] .bg-white\\:bg-opacity-95 {
+            background-color: #1E293B !important;
+        }
+        /* ========== ANIMATIONS (enhanced & buttery) ========== */
+        @keyframes float-particle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.5; }
+            80% { opacity: 0.5; }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+        }
+        @keyframes shimmer-badge {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        @keyframes slide-up-fade {
+            0% { opacity: 0; transform: translateY(35px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slide-left-fade {
+            0% { opacity: 0; transform: translateX(30px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slide-right-fade {
+            0% { opacity: 0; transform: translateX(-30px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes scale-glow {
+            0% { opacity: 0; transform: scale(0.95); box-shadow: 0 0 0 0 rgba(13,148,136,0); }
+            100% { opacity: 1; transform: scale(1); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15); }
+        }
+        @keyframes infinite-float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-reveal-left {
+            opacity: 0;
+            transform: translateX(-35px);
+            transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .scroll-reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .scroll-reveal-right {
+            opacity: 0;
+            transform: translateX(35px);
+            transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .scroll-reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .stagger-card {
+            transition: all 0.3s ease;
+        }
+        .stagger-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.2);
+            border-color: #14B8A6;
+        }
+        .animated-gradient-text {
+            background: linear-gradient(135deg, #0D9488, #2DD4BF);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shimmer-badge 3s linear infinite;
+        }
+        .particle {
+            position: absolute;
+            background: rgba(13,148,136,0.35);
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(1px);
+            animation: float-particle 14s infinite linear;
+        }
+        .typewriter-carousel {
+            border-right: 3px solid #0D9488;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            padding-right: 6px;
+            animation: blink-cursor 0.75s step-end infinite;
+        }
+        @keyframes blink-cursor {
+            from, to { border-color: transparent; }
+            50% { border-color: #0D9488; }
+        }
+        .badge-soft {
+            background: rgba(13,148,136,0.15);
+            backdrop-filter: blur(4px);
+            transition: all 0.2s;
+        }
+        .timeline-item {
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover {
+            transform: translateX(5px);
+        }
+        /* keep original background intact  */
+        .bg-teal-600 { background-color: #0D9488; }
+        .hover\:bg-teal-700:hover { background-color: #0F766E; }
+        .border-teal-500 { border-color: #14B8A6; }
+        .text-teal-400 { color: #2DD4BF; }
+        [data-theme="dark"] body {
+            background: #0F172A;
+        }
+        [data-theme="dark"] .bg-gray-50 {
+            background-color: #0F172A !important;
+        }
+        /* scroll reveal animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-reveal-left {
+            opacity: 0;
+            transform: translateX(-35px);
+            transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .scroll-reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .scroll-reveal-right {
+            opacity: 0;
+            transform: translateX(35px);
+            transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .scroll-reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .animated-gradient-text {
+            background: linear-gradient(135deg, #0D9488, #2DD4BF);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shimmer 3s linear infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        /* timeline modern styling */
+        .timeline-modern {
+            position: relative;
+        }
+        .timeline-modern::before {
+            content: '';
+            position: absolute;
+            left: 32px;
+            top: 20px;
+            height: calc(100% - 40px);
+            width: 2px;
+            background: linear-gradient(180deg, #0D9488, #14B8A6, #334155);
+            border-radius: 2px;
+            opacity: 0.6;
+        }
+        .timeline-card {
+            position: relative;
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(2px);
+        }
+        .timeline-card:hover {
+            transform: translateX(6px);
+            background: rgba(13,148,136,0.03);
+        }
+        [data-theme="dark"] .timeline-card:hover {
+            background: rgba(13,148,136,0.08);
+        }
+        /* badge soft */
+        .badge-soft {
+            background: rgba(13,148,136,0.15);
+            backdrop-filter: blur(2px);
+            transition: all 0.2s;
+        }
+        .badge-soft:hover {
+            background: rgba(13,148,136,0.3);
+            transform: scale(1.02);
+        }
+        /* certificate card enhancements */
+        .cert-card {
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+        }
+        .cert-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.3);
+            border-color: #14B8A6;
+        }
+        /* pulse glow for icons */
+        @keyframes soft-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(13,148,136,0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(13,148,136,0); }
+            100% { box-shadow: 0 0 0 0 rgba(13,148,136,0); }
+        }
+        .icon-glow {
+            animation: soft-pulse 2s infinite;
+        }
+        /* responsive */
+        @media (max-width: 768px) {
+            .timeline-modern::before {
+                left: 24px;
+            }
+        }
+          /* scroll reveal animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.2), transform 0.8s ease;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* skill card hover effects - light theme */
+        .skill-card {
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            background: white;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 35px -12px rgba(13,148,136,0.2);
+            border-color: #14B8A6;
+        }
+        /* progress bar animation */
+        .progress-fill {
+            width: 0%;
+            transition: width 1.2s cubic-bezier(0.22, 0.97, 0.36, 1);
+        }
+        /* project card styling - light theme */
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+            background: white;
+            border: 1px solid #e5e7eb;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #0D9488, #2DD4BF, #0D9488);
+            transition: left 0.5s ease;
+        }
+        .project-card:hover::before {
+            left: 0;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 40px -15px rgba(0,0,0,0.15);
+            border-color: #2DD4BF;
+        }
+        .icon-pulse {
+            animation: softPulse 2s infinite;
+        }
+        @keyframes softPulse {
+            0% { box-shadow: 0 0 0 0 rgba(13,148,136,0.3); }
+            70% { box-shadow: 0 0 0 10px rgba(13,148,136,0); }
+            100% { box-shadow: 0 0 0 0 rgba(13,148,136,0); }
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #0D9488, #0F766E);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        /* floating animation for icons */
+        @keyframes floatIcon {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-icon {
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+        /* badge styling - light theme */
+        .tech-badge {
+            background: rgba(13,148,136,0.1);
+            transition: all 0.2s;
+        }
+        .tech-badge:hover {
+            background: rgba(13,148,136,0.2);
+            transform: scale(1.05);
+        }
+        /* light theme specialized cards */
+        .specialty-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        .specialty-card:hover {
+            transform: translateY(-4px);
+            border-color: #14B8A6;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+
+    </style>
+     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+
+    <!-- Header (sticky, glass effect but original color scheme preserved) -->
+    <header class="p-5 sticky top-0 z-50 bg-white/95 backdrop-blur-sm transition-all duration-300 border-b border-gray-200 shadow-sm" style="background-color: rgba(255,255,255,0.96);">
+        <div class="flex justify-between items-center max-w-7xl mx-auto">
+            <h1 class="text-3xl font-extrabold"><span class="animated-gradient-text">Aleena Azam</span></h1>
+            <div class="hidden md:flex space-x-7">
+                <a href="#about" class="text-gray-700 font-medium hover:text-teal-600 transition relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-500 hover:after:w-full after:transition-all">About</a>
+                <a href="#experience" class="text-gray-700 font-medium hover:text-teal-600 transition after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-500 hover:after:w-full">Experience</a>
+                <a href="#education" class="text-gray-700 font-medium hover:text-teal-600 transition">Education</a>
+                <a href="#skills" class="text-gray-700 font-medium hover:text-teal-600 transition">Skills</a>
+                <a href="src/Pages/certificate.html" class="text-gray-700 font-medium hover:text-teal-600 transition">Certifications</a>
+                <a href="#contact" class="text-gray-700 font-medium hover:text-teal-600 transition">Contact</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <button class="theme-toggle p-2 rounded-full border border-gray-200 hover:border-teal-400 transition" onclick="toggleTheme()">
+                    <i class="fas fa-moon text-gray-700 dark-icon text-lg"></i>
+                </button>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700 text-2xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+        <div id="mobile-nav" class="hidden md:hidden flex-col bg-white/95 backdrop-blur-md p-5 space-y-3 mt-3 rounded-xl border"></div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 to-white dark:from-[#0F172A] dark:to-[#0F172A]">
+        <div id="particlesContainer" class="absolute inset-0 w-full h-full overflow-hidden"></div>
+        <div class="relative z-10 max-w-5xl mx-auto text-center px-6">
+            <div class="inline-block mb-5 px-5 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-700 dark:text-teal-300 text-sm font-medium backdrop-blur-sm scroll-reveal">
+                <i class="fas fa-code mr-1"></i> Python Developer & AI Engineer
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-tight scroll-reveal">
+                Aleena <span class="animated-gradient-text">Azam</span>
+            </h1>
+            <div class="h-20 mt-4">
+                <div id="dynamicTitle" class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-100 typewriter-carousel inline-block"></div>
+            </div>
+            <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 text-lg mt-6 scroll-reveal">
+                Python Developer & Software Engineer crafting intelligent, secure AI solutions. <br>
+                 Currently working  at Liaquat University as Application Trainer.
+            </p>
+            <div class="flex flex-wrap justify-center gap-5 mt-10 scroll-reveal">
+                <a href="#projects" class="px-7 py-3 rounded-full bg-teal-600 hover:bg-teal-500 font-semibold text-white transition-all transform hover:scale-105 shadow-lg shadow-teal-600/20">✨ Explore Work</a>
+                <a href="#contact" class="px-7 py-3 rounded-full border-2 border-teal-500 text-teal-600 dark:text-teal-300 font-semibold hover:bg-teal-500/10 transition-all hover:scale-105">📩 Contact Me</a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-70">
+            <i class="fas fa-chevron-down text-teal-500 text-xl"></i>
+        </div>
+    </section>
+
+    <!-- ABOUT section - REDUCED PADDING -->
+    <section id="about" class="py-16 px-6 max-w-7xl mx-auto bg-white dark:bg-[#0F172A]">
+        <div class="flex flex-col lg:flex-row gap-12 items-center">
+            <div class="lg:w-5/12 scroll-reveal-left">
+                <div class="relative group">
+                    <div class="w-72 h-72 lg:w-80 lg:h-80 rounded-3xl overflow-hidden shadow-2xl border-2 border-teal-500/40 mx-auto">
+                        <img src="src/aleena.PNG" alt="Aleena Azam" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="absolute -z-10 -bottom-4 -right-4 w-32 h-32 bg-teal-500/20 rounded-full blur-2xl"></div>
+                </div>
+            </div>
+            <div class="lg:w-7/12 space-y-5 scroll-reveal-right">
+                <h2 class="text-4xl md:text-5xl font-bold"><span class="animated-gradient-text">About Me</span></h2>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">I'm a passionate Python Developer and AI Engineer, driven by building impactful intelligent systems. I recently graduated with <span class="text-teal-600 dark:text-teal-300 font-bold">1st position in my final year</span> (BS CS, University of Sindh). Currently, I train faculty & doctors on digital systems at Liaquat University of Medical and Health Sciences.</p>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">My research on <span class="text-teal-600 dark:text-teal-300">"Skin Diseases Detection using YOLOv12s"</span> was presented at CSET'26 (79.17% accuracy) and published in the <span class="font-semibold text-teal-600 dark:text-teal-300">IJIST journal</span>. I co-authored a paper that merges deep learning with late fusion techniques — bridging the gap between healthcare & AI.</p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="src/ALEENA AZAM RESUME.pdf" class="inline-flex items-center gap-2 bg-[#1E293B] hover:bg-teal-700 transition px-6 py-2.5 rounded-full border border-gray-700 text-white"><i class="fas fa-file-pdf text-teal-400"></i> Open Resume</a>
+                    <a href="#contact" class="inline-flex items-center gap-2 border border-teal-500 text-teal-600 dark:text-teal-300 px-6 py-2.5 rounded-full hover:bg-teal-500/10 transition">Let's Talk <i class="fas fa-arrow-right text-sm"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION - REDUCED PADDING -->
+    <section id="experience" class="py-16 bg-gray-50 dark:bg-[#0F172A] transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-600 dark:text-teal-300 text-sm font-semibold tracking-wide mb-4 scroll-reveal">
+                    <i class="fas fa-briefcase mr-2"></i>Professional Journey
+                </span>
+                <h2 class="text-4xl md:text-5xl font-extrabold animated-gradient-text scroll-reveal">Work Experience</h2>
+                <div class="w-20 h-1 bg-teal-500/60 mx-auto mt-5 rounded-full"></div>
+            </div>
+
+            <div class="timeline-modern max-w-4xl mx-auto relative">
+                <!-- Experience 1 -->
+                <div class="timeline-card scroll-reveal-left mb-6">
+                    <div class="flex flex-col md:flex-row gap-5 p-5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/60 dark:bg-[#1E293B]/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all">
+                        <div class="md:w-auto flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center shadow-lg icon-glow">
+                                <i class="fas fa-chalkboard-user text-white text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex flex-wrap justify-between items-start gap-2">
+                                <h4 class="text-xl md:text-2xl font-bold text-gray-800 dark:text-white">Application Trainer & Support Officer</h4>
+                                <span class="px-3 py-1 rounded-full bg-teal-500/20 text-teal-600 dark:text-teal-300 text-xs font-semibold">Full-time · On-site</span>
+                            </div>
+                            <p class="text-teal-600 dark:text-teal-400 font-semibold mt-1">Liaquat University of Medical & Health Sciences</p>
+                            <div class="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400 mt-1">
+                                <i class="far fa-calendar-alt"></i> <span>Jan 2026 – Present</span>
+                                <i class="fas fa-map-marker-alt ml-2"></i> <span>Jamshoro, Pakistan</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 mt-3 leading-relaxed">Training faculty, doctors, and administrative staff on advanced digital health systems under the Digital Transformation Project. Providing daily application support, troubleshooting technical issues, and ensuring seamless system adoption.</p>
+                            <div class="flex flex-wrap gap-2 mt-3">
+                                <span class="badge-soft px-3 py-1 rounded-full text-teal-700 dark:text-teal-300 text-xs font-medium">Digital Systems</span>
+                                <span class="badge-soft px-3 py-1 rounded-full text-teal-700 dark:text-teal-300 text-xs font-medium">User Training</span>
+                                <span class="badge-soft px-3 py-1 rounded-full text-teal-700 dark:text-teal-300 text-xs font-medium">Support & Ops</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2 - Research Paper -->
+                <div class="timeline-card scroll-reveal-right mb-6">
+                    <div class="flex flex-col md:flex-row gap-5 p-5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/60 dark:bg-[#1E293B]/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all">
+                        <div class="md:w-auto flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-fuchsia-600 to-teal-600 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-file-alt text-white text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-xl md:text-2xl font-bold text-gray-800 dark:text-white">Research Co-Author & Conference Presenter</h4>
+                            <p class="text-teal-600 dark:text-teal-400 font-semibold">1st International Conference on CSET'26</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1"><i class="far fa-calendar-alt"></i> Dec 2025 – Mar 2026</p>
+                            <p class="text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">Co-authored and presented <a href="https://journal.50sea.com/index.php/IJIST/article/view/1723" target="_blank" rel="noopener noreferrer" class="font-semibold text-teal-600 dark:text-teal-400 hover:underline">"Skin Diseases Detection using YOLOv12s & Late Fusion Technique"</a> achieving <strong class="text-teal-600">79.17% diagnostic accuracy</strong> across 16 skin conditions. The paper bridges deep learning with clinical dermatology.</p>
+                            <div class="flex flex-wrap gap-2 mt-3">
+                                <span class="badge-soft px-3 py-1 rounded-full text-teal-700 text-xs">YOLOv12s</span>
+                                <span class="badge-soft px-3 py-1 rounded-full text-teal-700 text-xs">Deep Learning</span>
+                                <span class="badge-soft px-3 py-1 rounded-full text-teal-700 text-xs">Computer Vision</span>
+                                <span class="badge-soft px-3 py-1 rounded-full text-teal-700 text-xs">Late Fusion</span>
+                                <a href="https://journal.50sea.com/index.php/IJIST/article/view/1723" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-teal-100 dark:bg-teal-900/50 text-teal-700 dark:text-teal-300 text-xs hover:bg-teal-200 transition-colors"><i class="fas fa-external-link-alt text-[10px]"></i> Read Paper</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 3 - AI Developer Intern -->
+                <div class="timeline-card scroll-reveal-left mb-6">
+                    <div class="flex flex-col md:flex-row gap-5 p-5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/60 dark:bg-[#1E293B]/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all">
+                        <div class="md:w-auto flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-teal-500 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-robot text-white text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-xl md:text-2xl font-bold text-gray-800 dark:text-white">AI Developer Intern</h4>
+                            <p class="text-teal-600 dark:text-teal-400 font-semibold">Evolvian Softwares (Pvt.) Ltd. · Remote</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400"><i class="far fa-calendar-alt"></i> Jul 2025 – Oct 2025</p>
+                            <p class="text-gray-600 dark:text-gray-300 mt-2">Worked on production-grade AI modules and backend APIs. Contributed to intelligent automation scripts and model deployment pipelines. Gained hands-on experience with Python, FastAPI, and cloud integration.</p>
+                            <div class="flex flex-wrap gap-2 mt-3">
+                                <span class="badge-soft px-3 py-1 rounded-full text-teal-700 text-xs">Machine Learning</span>
+                                <span class="badge-soft px-3 py-1 rounded-full text-teal-700 text-xs">API Development</span>
+                                <span class="badge-soft px-3 py-1 rounded-full text-teal-700 text-xs">Python</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 4 - Capstone Coordinator -->
+                <div class="timeline-card scroll-reveal-right">
+                    <div class="flex flex-col md:flex-row gap-5 p-5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/60 dark:bg-[#1E293B]/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all">
+                        <div class="md:w-auto flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-600 to-teal-600 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-tasks text-white text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-xl md:text-2xl font-bold text-gray-800 dark:text-white">Capstone Project Management Coordinator</h4>
+                            <p class="text-teal-600 dark:text-teal-400 font-semibold">Institute of Mathematics & Computer Science</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400"><i class="far fa-calendar-alt"></i> May 2025 – Feb 2026</p>
+                            <p class="text-gray-600 dark:text-gray-300 mt-2">Led project management for 12+ final-year teams: supervised milestones, coordinated with industry mentors, organized review sessions, and ensured timely deliverables. Enhanced team collaboration and technical documentation.</p>
+                            <div class="flex flex-wrap gap-2 mt-3">
+                                <span class="badge-soft px-3 py-1 rounded-full text-teal-700 text-xs">Project Leadership</span>
+                                <span class="badge-soft px-3 py-1 rounded-full text-teal-700 text-xs">Agile</span>
+                                <span class="badge-soft px-3 py-1 rounded-full text-teal-700 text-xs">Mentoring</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION & CERTIFICATIONS SECTION - REDUCED PADDING -->
+    <section id="education" class="py-16 bg-gray-50 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-10">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-teal-500/15 border border-teal-500/40 text-teal-700 dark:text-teal-300 text-sm font-semibold tracking-wide scroll-reveal">
+                    <i class="fas fa-graduation-cap mr-2"></i> Academic Excellence
+                </span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 scroll-reveal mt-4">Education & Certifications</h2>
+                <div class="w-20 h-1 bg-teal-500 mx-auto mt-5 rounded-full"></div>
+            </div>
+
+            <!-- Education Highlight Card -->
+            <div class="max-w-3xl mx-auto mb-16 scroll-reveal">
+                <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-xl hover:shadow-teal-500/10 transition-all duration-500">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex items-center gap-5">
+                            <div class="w-16 h-16 rounded-2xl bg-teal-100 flex items-center justify-center">
+                                <i class="fas fa-university text-teal-600 text-3xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl md:text-3xl font-bold text-gray-900">BS in Computer Science</h3>
+                                <p class="text-teal-600 text-lg font-medium">University of Sindh, Jamshoro</p>
+                            </div>
+                        </div>
+                        <div class="px-4 py-2 bg-teal-50 rounded-full border border-teal-200">
+                            <p class="text-teal-700 font-bold"><i class="fas fa-trophy mr-2 text-amber-500"></i> 1st Position · Final Year</p>
+                        </div>
+                    </div>
+                    <div class="mt-5 flex flex-wrap gap-4 text-gray-600">
+                        <span><i class="far fa-calendar-check text-teal-500 mr-1"></i> Graduated: December 2025</span>
+                        <span><i class="fas fa-star text-teal-500 mr-1"></i> CGPA: 3.79 / 4.0</span>
+                        <span><i class="fas fa-microchip text-teal-500 mr-1"></i> Specialization: AI & Data Science</span>
+                    </div>
+                    <div class="mt-4 h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-r from-teal-500 to-teal-300 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications grid - 6 certificates -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cert 1 -->
+                <div class="cert-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200 hover:border-teal-400 hover:shadow-xl transition-all duration-300 scroll-reveal">
+                    <div class="h-40 bg-gradient-to-br from-gray-50 to-gray-100 flex justify-center items-center p-4 relative">
+                        <div class="absolute inset-0 bg-teal-500/5"></div>
+                        <img src="src/images/CERT 20.png" alt="Google IT Automation" class="h-28 object-contain relative z-10 drop-shadow-md">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-gray-800">Google IT Automation with Python</h3>
+                            <span class="bg-teal-100 text-teal-700 text-xs px-2 py-1 rounded-full">Coursera</span>
+                        </div>
+                        <p class="text-teal-600 text-xs mt-1"><i class="far fa-calendar-alt mr-1"></i> Issued Apr 2026</p>
+                        <p class="text-gray-600 text-xs mt-2">Professional certification covering IT automation, Python scripting, and system administration.</p>
+                        <a href="#" target="_blank" class="inline-flex items-center gap-2 mt-3 text-teal-600 hover:text-teal-700 text-xs font-medium transition">View credential <i class="fas fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="cert-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200 hover:border-teal-400 hover:shadow-xl transition-all scroll-reveal">
+                    <div class="h-40 bg-gradient-to-br from-gray-50 to-gray-100 flex justify-center items-center">
+                        <img src="src/images/CERT 22.png" alt="Automating Real-World Tasks" class="h-28 object-contain">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-gray-800">Automating Real-World Tasks with Python</h3>
+                            <span class="bg-teal-100 text-teal-700 text-xs px-2 py-1 rounded-full">Google</span>
+                        </div>
+                        <p class="text-teal-600 text-xs mt-1"><i class="far fa-calendar-alt mr-1"></i> Issued Oct 2025</p>
+                        <p class="text-gray-500 text-xs">Credential ID: 1OFWF2912BOU</p>
+                        <p class="text-gray-600 text-xs mt-1">Practical automation of real-world tasks using Python scripts.</p>
+                        <a href="#" target="_blank" class="inline-flex items-center gap-2 mt-3 text-teal-600 hover:text-teal-700 text-xs font-medium">View credential <i class="fas fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="cert-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200 hover:border-teal-400 hover:shadow-xl transition-all scroll-reveal">
+                    <div class="h-40 bg-gradient-to-br from-gray-50 to-gray-100 flex justify-center items-center">
+                        <img src="src/images/CERT 23.png" alt="Configuration Management" class="h-28 object-contain">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-gray-800">Configuration Management & the Cloud</h3>
+                            <span class="bg-teal-100 text-teal-700 text-xs px-2 py-1 rounded-full">Google</span>
+                        </div>
+                        <p class="text-teal-600 text-xs mt-1"><i class="far fa-calendar-alt mr-1"></i> Issued Oct 2025</p>
+                        <p class="text-gray-500 text-xs">Credential ID: I8V0MJCLO2WF</p>
+                        <p class="text-gray-600 text-xs mt-1">Cloud infrastructure management and configuration automation.</p>
+                        <a href="#" target="_blank" class="inline-flex items-center gap-2 mt-3 text-teal-600 hover:text-teal-700 text-xs font-medium">View credential <i class="fas fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Cert 4 -->
+                <div class="cert-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200 hover:border-teal-400 hover:shadow-xl transition-all scroll-reveal">
+                    <div class="h-40 bg-gradient-to-br from-gray-50 to-gray-100 flex justify-center items-center">
+                        <img src="src/images/CERT 24.png" alt="Troubleshooting Techniques" class="h-28 object-contain">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-gray-800">Troubleshooting & Debugging Techniques</h3>
+                            <span class="bg-teal-100 text-teal-700 text-xs px-2 py-1 rounded-full">Google</span>
+                        </div>
+                        <p class="text-teal-600 text-xs mt-1"><i class="far fa-calendar-alt mr-1"></i> Issued Oct 2025</p>
+                        <p class="text-gray-500 text-xs">Credential ID: 4ZJLTK4P319S</p>
+                        <p class="text-gray-600 text-xs mt-1">Systematic debugging approaches for IT systems.</p>
+                        <a href="#" target="_blank" class="inline-flex items-center gap-2 mt-3 text-teal-600 hover:text-teal-700 text-xs font-medium">View credential <i class="fas fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Cert 5 -->
+                <div class="cert-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200 hover:border-teal-400 hover:shadow-xl transition-all scroll-reveal">
+                    <div class="h-40 bg-gradient-to-br from-gray-50 to-gray-100 flex justify-center items-center">
+                        <img src="src/images/CERT 26.png" alt="Git and GitHub" class="h-28 object-contain">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-gray-800">Introduction to Git and GitHub</h3>
+                            <span class="bg-teal-100 text-teal-700 text-xs px-2 py-1 rounded-full">Google</span>
+                        </div>
+                        <p class="text-teal-600 text-xs mt-1"><i class="far fa-calendar-alt mr-1"></i> Issued Sep 2025</p>
+                        <p class="text-gray-500 text-xs">Credential ID: 1KMVU1TSL3GT</p>
+                        <p class="text-gray-600 text-xs mt-1">Version control fundamentals using Git and GitHub.</p>
+                        <a href="#" target="_blank" class="inline-flex items-center gap-2 mt-3 text-teal-600 hover:text-teal-700 text-xs font-medium">View credential <i class="fas fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Cert 6 -->
+                <div class="cert-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200 hover:border-teal-400 hover:shadow-xl transition-all scroll-reveal">
+                    <div class="h-40 bg-gradient-to-br from-gray-50 to-gray-100 flex justify-center items-center">
+                        <img src="src/images/CERT 25.png" alt="Internship Certificate" class="h-28 object-contain">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-gray-800">Internship Certificate</h3>
+                            <span class="bg-teal-100 text-teal-700 text-xs px-2 py-1 rounded-full">Mehran Sugar Mills</span>
+                        </div>
+                        <p class="text-teal-600 text-xs mt-1"><i class="far fa-calendar-alt mr-1"></i> Issued 2025</p>
+                        <p class="text-gray-600 text-xs mt-1">Completed 3-month internship at Mehran Sugar Mills Limited.</p>
+                        <a href="#" target="_blank" class="inline-flex items-center gap-2 mt-3 text-teal-600 hover:text-teal-700 text-xs font-medium">View credential <i class="fas fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10 scroll-reveal">
+                <a href="src/Pages/certificate.html" class="inline-flex items-center gap-3 bg-teal-600 hover:bg-teal-500 text-white px-6 py-2.5 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shadow-teal-600/30 text-sm">
+                    <i class="fas fa-award text-lg"></i> View All Certifications
+                    <i class="fas fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION - REDUCED PADDING -->
+    <section id="skills" class="py-16 bg-gray-50 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-30 pointer-events-none">
+            <div class="absolute top-20 left-10 w-64 h-64 bg-teal-500/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-20 w-80 h-80 bg-teal-500/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-10">
+                <div class="inline-block px-5 py-2 rounded-full bg-teal-100 border border-teal-200 text-teal-700 text-sm font-semibold tracking-wide mb-4 scroll-reveal">
+                    <i class="fas fa-cogs mr-2"></i> My Expertise
+                </div>
+                <h2 class="text-4xl md:text-5xl font-extrabold scroll-reveal">
+                    <span class="gradient-text">Technical Arsenal</span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-teal-500 to-teal-300 mx-auto mt-5 rounded-full scroll-reveal"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto scroll-reveal">Tools & technologies I master to build robust, intelligent applications</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Languages Card -->
+                <div class="skill-card rounded-2xl p-5 scroll-reveal bg-white shadow-md hover:shadow-xl transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center">
+                            <i class="fas fa-code text-teal-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Languages</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">Python</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">JavaScript</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">Java</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">C/C++</span>
+                    </div>
+                </div>
+
+                <!-- AI/ML Card -->
+                <div class="skill-card rounded-2xl p-5 scroll-reveal bg-white shadow-md hover:shadow-xl transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center">
+                            <i class="fas fa-brain text-teal-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">AI/ML</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">TensorFlow</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">Scikit-Learn</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">OpenCV</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">Pandas</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">NumPy</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">YOLOv12s</span>
+                    </div>
+                </div>
+
+                <!-- Backend Card -->
+                <div class="skill-card rounded-2xl p-5 scroll-reveal bg-white shadow-md hover:shadow-xl transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center">
+                            <i class="fas fa-server text-teal-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Backend</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">Django</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">Flask</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">FastAPI</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">REST APIs</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">Django REST</span>
+                    </div>
+                </div>
+
+                <!-- Databases Card -->
+                <div class="skill-card rounded-2xl p-5 scroll-reveal bg-white shadow-md hover:shadow-xl transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center">
+                            <i class="fas fa-database text-teal-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Databases</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">MySQL</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">PostgreSQL</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">MongoDB</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 text-sm font-medium">SQLite</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specialized skills row -->
+            <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="specialty-card rounded-xl p-4 text-center scroll-reveal bg-white shadow-md hover:shadow-lg transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-chart-line text-teal-600 text-lg"></i>
+                    </div>
+                    <h4 class="text-gray-800 font-bold text-sm">Data Science</h4>
+                    <p class="text-gray-500 text-xs">Data Collection, Analysis, Visualization</p>
+                </div>
+                <div class="specialty-card rounded-xl p-4 text-center scroll-reveal bg-white shadow-md hover:shadow-lg transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-shield-alt text-teal-600 text-lg"></i>
+                    </div>
+                    <h4 class="text-gray-800 font-bold text-sm">Cybersecurity</h4>
+                    <p class="text-gray-500 text-xs">Network Security, Encryption</p>
+                </div>
+                <div class="specialty-card rounded-xl p-4 text-center scroll-reveal bg-white shadow-md hover:shadow-lg transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-users text-teal-600 text-lg"></i>
+                    </div>
+                    <h4 class="text-gray-800 font-bold text-sm">Team Leadership</h4>
+                    <p class="text-gray-500 text-xs">Project Management, Agile, SDLC</p>
+                </div>
+                <div class="specialty-card rounded-xl p-4 text-center scroll-reveal bg-white shadow-md hover:shadow-lg transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-paintbrush text-teal-600 text-lg"></i>
+                    </div>
+                    <h4 class="text-gray-800 font-bold text-sm">UI/UX & Design</h4>
+                    <p class="text-gray-500 text-xs">Canva, Photoshop, Illustrator</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION - REDUCED PADDING -->
+    <section id="projects" class="py-16 bg-gray-50 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <div class="inline-block px-5 py-2 rounded-full bg-teal-100 border border-teal-200 text-teal-700 text-sm font-semibold tracking-wide mb-4 scroll-reveal">
+                    <i class="fas fa-rocket mr-2"></i> Recent Builds
+                </div>
+                <h3 class="text-4xl md:text-5xl font-extrabold scroll-reveal">
+                    <span class="gradient-text">Featured Projects</span>
+                </h3>
+                <div class="w-24 h-1 bg-gradient-to-r from-teal-500 to-teal-300 mx-auto mt-5 rounded-full scroll-reveal"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto scroll-reveal">AI, ML, and full-stack creations that solve real-world challenges</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project cards remain the same but with reduced internal padding -->
+               <!-- Project 1 - Skin Disease Recognition -->
+            <div class="project-card rounded-2xl p-6 scroll-reveal bg-white shadow-md hover:shadow-xl transition-all">
+                <div class="h-48 bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl flex items-center justify-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition"></div>
+                    <i class="fas fa-laptop-medical text-teal-500 text-6xl float-icon relative z-10"></i>
+                </div>
+                <h4 class="text-2xl font-bold text-gray-800 mt-5">Skin Disease Recognition System</h4>
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">YOLOv12s</span>
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">Deep Learning</span>
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">Django</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-3">Final Year Project 2025: Achieved 79.17% diagnostic accuracy across 16 skin conditions using YOLOv12s & Late Fusion. Research paper presented at CSET'26.</p>
+                <div class="mt-5 flex gap-4">
+                    <a href="https://github.com/aleena-azam510/Glow-Genie-Skin-Care-Prediction" target="_blank" rel="noopener noreferrer" class="text-teal-600 hover:text-teal-700 text-sm font-medium transition flex items-center gap-1">GitHub <i class="fas fa-external-link-alt text-xs"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-teal-600 text-sm transition">Live Demo (Soon) →</a>
+                </div>
+            </div>
+
+            <!-- Project 2 - Digital Testing Service -->
+            <div class="project-card rounded-2xl p-6 scroll-reveal bg-white shadow-md hover:shadow-xl transition-all">
+                <div class="h-48 bg-gradient-to-br from-indigo-50 to-purple-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-chalkboard-teacher text-indigo-500 text-6xl float-icon"></i>
+                </div>
+                <h4 class="text-2xl font-bold text-gray-800 mt-5">Digital Testing Service</h4>
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">Flask</span>
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">PostgreSQL</span>
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">JWT</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-3">Online examination platform with user authentication, real-time result generation, and comprehensive admin dashboard for test management.</p>
+                <div class="mt-5">
+                    <a href="#" class="text-teal-600 hover:text-teal-700 text-sm font-medium transition">Live Demo →</a>
+                </div>
+            </div>
+
+            <!-- Project 3 - Next-Word Prediction -->
+            <div class="project-card rounded-2xl p-6 scroll-reveal bg-white shadow-md hover:shadow-xl transition-all">
+                <div class="h-48 bg-gradient-to-br from-emerald-50 to-teal-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-text-height text-emerald-500 text-6xl float-icon"></i>
+                </div>
+                <h4 class="text-2xl font-bold text-gray-800 mt-5">Next-Word Prediction</h4>
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">LSTM</span>
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">NLP</span>
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">TensorFlow</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-3">Deep learning model using Recurrent Neural Networks (RNN) and LSTM architecture to predict next word sequences with high contextual accuracy.</p>
+                <div class="mt-5">
+                    <a href="src/projects/next-word-prediction.html" class="text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Details →</a>
+                </div>
+            </div>
+
+            <!-- Project 4 - Sentiment Analysis -->
+            <div class="project-card rounded-2xl p-6 scroll-reveal bg-white shadow-md hover:shadow-xl transition-all">
+                <div class="h-48 bg-gradient-to-br from-pink-50 to-rose-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-smile-wink text-pink-500 text-6xl float-icon"></i>
+                </div>
+                <h4 class="text-2xl font-bold text-gray-800 mt-5">Text Sentiment Analysis</h4>
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">Machine Learning</span>
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">NLP</span>
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">Python</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-3">Web application that analyzes text sentiment using machine learning models. Demonstrates NLP techniques and web deployment skills.</p>
+                <div class="mt-5 flex gap-4">
+                    <a href="src/projects/text-sentiment-analysis.html" class="text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Details →</a>
+                    <a href="https://github.com/aleena-azam510/text-sentiment-analysis-app" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-teal-600 text-sm transition">GitHub</a>
+                </div>
+            </div>
+
+            <!-- Project 5 - Credit Card Fraud Detection -->
+            <div class="project-card rounded-2xl p-6 scroll-reveal bg-white shadow-md hover:shadow-xl transition-all">
+                <div class="h-48 bg-gradient-to-br from-amber-50 to-orange-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-credit-card text-amber-500 text-6xl float-icon"></i>
+                </div>
+                <h4 class="text-2xl font-bold text-gray-800 mt-5">Credit Card Fraud Detection</h4>
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">Scikit-learn</span>
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">Imbalanced Data</span>
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">Pandas</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-3">Machine learning model designed to identify fraudulent credit card transactions with high precision, focusing on handling imbalanced datasets.</p>
+                <div class="mt-5 flex gap-4">
+                    <a href="src/projects/credit-card-fraud-detection.html" class="text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Details →</a>
+                    <a href="https://github.com/aleena-azam510/credit-card-fraud-detection" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-teal-600 text-sm transition">GitHub</a>
+                </div>
+            </div>
+
+            <!-- Project 6 - VisionMeet -->
+            <div class="project-card rounded-2xl p-6 scroll-reveal bg-white shadow-md hover:shadow-xl transition-all">
+                <div class="h-48 bg-gradient-to-br from-slate-50 to-gray-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-video text-slate-500 text-6xl float-icon"></i>
+                </div>
+                <h4 class="text-2xl font-bold text-gray-800 mt-5">VisionMeet</h4>
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">WebRTC</span>
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">Socket.io</span>
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">JavaScript</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-3">Real-time video conferencing application for seamless communication, featuring screen sharing, chat, and secure virtual meetings.</p>
+                <div class="mt-5 flex gap-4">
+                    <a href="src/projects/vision-meet.html" class="text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Details →</a>
+                    <a href="https://github.com/aleena-azam510/video-conferencing" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-teal-600 text-sm transition">GitHub</a>
+                </div>
+            </div>
+
+            <!-- Project 7 - Pakistan Weather Dashboard -->
+            <div class="project-card rounded-2xl p-6 scroll-reveal bg-white shadow-md hover:shadow-xl transition-all">
+                <div class="h-48 bg-gradient-to-br from-sky-50 to-blue-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-cloud-sun text-sky-500 text-6xl float-icon"></i>
+                </div>
+                <h4 class="text-2xl font-bold text-gray-800 mt-5">Pakistan Weather Dashboard</h4>
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">OpenWeather API</span>
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">JavaScript</span>
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">Chart.js</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-3">Real-time weather dashboard for Pakistani cities with current conditions, hourly & 5-day forecasts, and weather alerts with data visualization.</p>
+                <div class="mt-5 flex gap-4">
+                    <a href="src/projects/weather-dashboard.html" class="text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Details →</a>
+                    <a href="https://github.com/aleena-azam510/weather-animation-dashboard" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-teal-600 text-sm transition">GitHub</a>
+                </div>
+            </div>
+
+            <!-- Project 8 - Environmental Analysis -->
+            <div class="project-card rounded-2xl p-6 scroll-reveal bg-white shadow-md hover:shadow-xl transition-all">
+                <div class="h-48 bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-leaf text-green-500 text-6xl float-icon"></i>
+                </div>
+                <h4 class="text-2xl font-bold text-gray-800 mt-5">Environmental Analysis</h4>
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">Data Science</span>
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">Python</span>
+                    <span class="tech-badge px-2 py-1 rounded-full bg-teal-100 text-teal-700 text-xs">Tableau</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-3">Data-driven environmental analysis studying pollution impact on local ecosystems using Python for analysis and Tableau for visualization.</p>
+                <div class="mt-5">
+                    <a href="src/projects/reasearch-project.html" class="text-teal-600 hover:text-teal-700 text-sm font-medium transition">View Details →</a>
+                </div>
+            </div>
+
+            <!-- Project 9 - More Coming Soon -->
+            <div class="project-card rounded-2xl p-6 scroll-reveal bg-white shadow-md hover:shadow-xl transition-all flex items-center justify-center min-h-[400px]">
+                <div class="text-center">
+                    <div class="w-24 h-24 rounded-full bg-teal-100 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-plus text-teal-500 text-3xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-gray-800 mb-2">More Projects</h4>
+                    <p class="text-teal-600 text-sm mb-3 font-medium">Coming Soon</p>
+                    <p class="text-gray-500 text-sm">I'm constantly working on new projects and improving my skills. Check back later for more!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-14 scroll-reveal">
+            <a href="https://github.com/aleena-azam510" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 border-2 border-teal-500 text-teal-600 hover:bg-teal-50 px-8 py-3 rounded-full font-semibold transition-all">
+                View All on GitHub <i class="fab fa-github text-lg"></i>
+            </a>
+        </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer - REDUCED PADDING -->
+    <section id="contact" class="py-16 max-w-5xl mx-auto px-6">
+        <div class="bg-[#1E293B] rounded-2xl p-8 shadow-xl text-center scroll-reveal">
+            <h2 class="text-3xl font-bold text-white">Get in Touch</h2>
+            <p class="text-gray-300 mt-3">Open for opportunities — let's create something impactful.</p>
+            <a href="mailto:aleenaazamchandio12@gmail.com" class="inline-block mt-5 bg-teal-600 hover:bg-teal-500 text-white px-6 py-2.5 rounded-full transition text-sm">Say Hello <i class="fas fa-paper-plane ml-2"></i></a>
+            <div class="flex justify-center gap-5 mt-6">
+                <a href="https://github.com/aleena-azam510" class="text-gray-300 hover:text-teal-400 text-xl"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/aleena-azam-321780322/" class="text-gray-300 hover:text-teal-400 text-xl"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:aleenaazamchandio12@gmail.com" class="text-gray-300 hover:text-teal-400 text-xl"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="text-center py-6 border-t border-gray-800 bg-[#0F172A] text-gray-400 text-xs">
+        © 2025 Aleena Azam — Built with <i class="fas fa-heart text-teal-500"></i> & modern animations
+    </footer>
+</body>
+
+    <script>
+        // particles generation
+        function initParticles() {
+            const container = document.getElementById('particlesContainer');
+            if (!container) return;
+            container.innerHTML = '';
+            for(let i=0;i<55;i++){
+                const p = document.createElement('div');
+                p.classList.add('particle');
+                const size = Math.random() * 8 + 2;
+                p.style.width = size+'px';
+                p.style.height = size+'px';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDuration = Math.random() * 18 + 8 + 's';
+                p.style.animationDelay = Math.random() * 12 + 's';
+                p.style.opacity = Math.random() * 0.4 + 0.1;
+                container.appendChild(p);
+            }
+        }
+        // carousel text
+        const titles = ["Python Developer & AI Engineer", "Software Engineer", "ML & Deep Learning Enthusiast", "Research Author | YOLOv12s"];
+        let idx=0, charI=0, isDeleting=false;
+        const el = document.getElementById('dynamicTitle');
+        function typeCarousel() {
+            if(!el) return;
+            const current = titles[idx];
+            if(isDeleting){
+                el.innerText = current.substring(0, charI-1);
+                charI--;
+                if(charI===0){ isDeleting=false; idx=(idx+1)%titles.length; setTimeout(typeCarousel,500); return; }
+            } else {
+                el.innerText = current.substring(0, charI+1);
+                charI++;
+                if(charI === current.length){ isDeleting=true; setTimeout(typeCarousel,1800); return; }
+            }
+            setTimeout(typeCarousel, isDeleting?40:80);
+        }
+        // intersection observer for all reveals
+        const reveals = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
+        reveals.forEach(el=>observer.observe(el));
+
+        // mobile toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        if(menuBtn && mobileNav){
+            menuBtn.addEventListener('click',()=>{
+                mobileNav.classList.toggle('hidden');
+                mobileNav.innerHTML = `<a href="#about" class="block py-2">About</a><a href="#experience" class="block py-2">Experience</a><a href="#education" class="block py-2">Education</a><a href="#skills" class="block py-2">Skills</a><a href="#contact" class="block py-2">Contact</a>`;
+            });
+        }
+        // dark mode toggle (preserves background)
+        function toggleTheme(){
+            const html = document.documentElement;
+            if(html.getAttribute('data-theme')==='dark'){
+                html.removeAttribute('data-theme');
+                localStorage.setItem('theme','light');
+            } else {
+                html.setAttribute('data-theme','dark');
+                localStorage.setItem('theme','dark');
+            }
+        }
+        window.toggleTheme = toggleTheme;
+        if(localStorage.getItem('theme')==='dark') document.documentElement.setAttribute('data-theme','dark');
+        initParticles();
+        setTimeout(()=>typeCarousel(), 200);
+        // smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+            anchor.addEventListener('click',function(e){
+                const hash = this.getAttribute('href');
+                if(hash==="#") return;
+                const target = document.querySelector(hash);
+                if(target){
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior:'smooth', block:'start'});
+                }
+            });
+        });
+    </script>
+    <script>
+    // Intersection Observer for scroll animations
+    (function() {
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+        revealElements.forEach(el => observer.observe(el));
+    })();
+</script>
+<script>
+        // Intersection Observer for scroll animations + progress bars
+        const reveals = document.querySelectorAll('.scroll-reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+        reveals.forEach(el => observer.observe(el));
+
+        // Animate progress bars when skill cards come into view
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-fill');
+                    fills.forEach(fill => {
+                        const width = fill.getAttribute('data-width');
+                        if (width) fill.style.width = width + '%';
+                    });
+                    progressObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.skill-card').forEach(card => progressObserver.observe(card));
+    </script>
+
+</body>
+</html>

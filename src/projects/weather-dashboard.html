@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pakistan Weather Dashboard - Aleena Azam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #5a033d;
+            --secondary: #984a83;
+            --accent: #580d7d;
+            --dark: #370035;
+            --darker: #290029a8;
+            --light: #c25fa9;
+            --lighter: #b77f9c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            transform: scale(1);
+        }
+
+        .glass-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .animated-gradient {
+            background-image: linear-gradient(to right, var(--secondary), var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient-animation 4s ease-in-out infinite;
+        }
+
+        .card {
+            background-color: #b58fb0;
+            border: 1px solid #3e114c;
+            box-shadow: 0 8px 16px rgba(118, 4, 128, 0.3);
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 1s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[#98759c] text-[#370035] min-h-screen">
+
+    <header class="py-16">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h1 class="header-title text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 animated-gradient">
+                Pakistan Weather Dashboard
+            </h1>
+            <p class="header-subtitle text-lg md:text-xl text-fuchsia-950 max-w-2xl mx-auto">
+                A modern and responsive web application for weather information.
+            </p>
+        </div>
+    </header>
+
+    <main class="py-12 px-6">
+        <div class="max-w-4xl mx-auto">
+
+            <section class="mb-12 glass-card p-8 slide-up delay-100 card">
+                <h2 class="text-2xl font-bold mb-4 text-[#370035]">📝 About This Project</h2>
+                <p class="text-gray-300 leading-relaxed">
+                    This is a dummy weather dashboard created to demonstrate a front-end interface. The project focuses on creating a responsive and visually appealing user experience, using dummy data to simulate a live weather application.
+                </p>
+            </section>
+
+            <section class="mb-12 glass-card p-8 slide-up delay-200 card">
+                <h2 class="text-2xl font-bold mb-4 text-[#370035]">🛠️ Key Features</h2>
+                <ul class="list-disc list-inside text-gray-300 leading-relaxed space-y-2">
+                    <li><strong>Real-time Weather:</strong> Displays current weather data for major cities.</li>
+                    <li><strong>Detailed Forecasts:</strong> Provides both hourly and 5-day weather forecasts.</li>
+                    <li><strong>Weather Maps:</strong> Includes interactive maps for temperature, precipitation, wind, and cloud cover.</li>
+                    <li><strong>Severe Weather Alerts:</strong> Features a section for displaying important weather alerts.</li>
+                    <li><strong>Air Quality Index (AQI):</strong> Shows current air pollution data.</li>
+                    <li><strong>Responsive Design:</strong> Ensures the dashboard works seamlessly on all device sizes.</li>
+                </ul>
+            </section>
+
+            <section class="mb-12 glass-card p-8 slide-up delay-300 card">
+                <h2 class="text-2xl font-bold mb-4 text-[#370035]">⚙️ Technical Stack</h2>
+                <p class="text-gray-300 leading-relaxed mb-4">
+                    This project is a static front-end application built with modern web technologies.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2 text-fuchsia-950">Frontend</h4>
+                        <ul class="list-disc list-inside text-gray-300 space-y-1">
+                            <li>HTML5</li>
+                            <li>Tailwind CSS</li>
+                            <li>JavaScript (for dynamic components)</li>
+                            <li>Font Awesome for icons</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-12 glass-card p-8 slide-up delay-500 card">
+                <h2 class="text-2xl font-bold mb-4 text-[#370035]">🖼️ Key Screenshots</h2>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    These screenshots highlight the key features and user interface design of the weather dashboard.
+                </p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <img src="../images/weather-dashboard (1).png" alt="Main dashboard showing current weather" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+                    <img src="../images/weather-dashboard (2).png" alt="Forecast and weather alerts section" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+                    <img src="../images/weather-dashboard (3).png" alt="Detailed weather forecast" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+                    <img src="../images/weather-dashboard (4).png" alt="Weather map visualization" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+                </div>
+            </section>
+
+            <section class="mb-12 glass-card p-8 slide-up delay-600 card">
+                <h2 class="text-2xl font-bold mb-4 text-[#370035]">💡 Learnings & Future Scope</h2>
+                <p class="text-gray-300 leading-relaxed">
+                    This project was a great exercise in building a modern, responsive user interface with a focus on design and user experience. It demonstrates the power of CSS frameworks like <strong>Tailwind CSS</strong> for rapid development. Future improvements could include integrating a real weather API (e.g., OpenWeatherMap, WeatherAPI) to display live data, adding dynamic charts for forecasts, and implementing a location search function.
+                </p>
+            </section>
+
+            <div class="text-center slide-up delay-700">
+                <a href="/index.html#projects" class="inline-block px-8 py-3 rounded-full text-white bg-fuchsia-950 hover:bg-fuchsia-700 transition duration-300 font-semibold shadow-lg">
+                    ← Back to Projects
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-6 px-6 text-center text-gray-800 text-sm">
+        <p>&copy; <span id="current-year"></span> Aleena Azam. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
